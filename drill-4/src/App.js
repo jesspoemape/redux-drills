@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addGuest, removeGuest } from './ducks/guestList';
 import { connect } from 'react-redux';
+import EditGuest from './components/EditGuest/EditGuest';
 import './App.css';
 
 
@@ -83,7 +84,11 @@ class App extends Component {
         </form>
         {
            this.state.edit ?
-                {/* EditGuest */}
+                <EditGuest 
+                  guest={this.state.guestToEdit} 
+                  index={this.state.guestIndex}
+                  hide={this.hideModal}
+                />
                 : null
         }
       </div>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {updateGuest} from './../../ducks/guestList';
 import './EditGuest.css';
 
 class EditGuest extends Component {
@@ -12,8 +14,14 @@ class EditGuest extends Component {
 
 
   update() {
-    // update guest name function
+    this.props.updateGuest(this.props.index, this.state.text);
     this.props.hide();
+  }
+
+  handleChange(e) {
+    this.setState({
+      text: e
+    });
   }
 
 
@@ -23,10 +31,14 @@ class EditGuest extends Component {
       <div className="modal-bg">
         <div className="modal">
           <input
+            value={this.state.text}
+            onChange={ (e) => this.handleChange(e.target.value) }
             className="modal-input"/>
           <button
             type=""
-            className="modal-btn">Update</button>
+            className="modal-btn"
+            onClick={ () => this.update(this.props.guest) }
+            >Update</button>
           <button
             onClick={this.props.hide}
             type=""
@@ -37,4 +49,5 @@ class EditGuest extends Component {
   }
 }
 
-export default EditGuest;
+
+export default connect(null, {updateGuest})(EditGuest);
