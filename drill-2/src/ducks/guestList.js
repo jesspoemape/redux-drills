@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const initialState = {
     currentGuests: [
         'Tony Stark', 
@@ -12,4 +13,10 @@ const initialState = {
 
 export default function guestList(state = initialState, action) {
     return state;
+=======
+const initialState = {}
+
+export default function reducer(state = initialState, action) {
+  return state;
+>>>>>>> fa2787c0d3712edb3e821557619662fac47501d2
 }
